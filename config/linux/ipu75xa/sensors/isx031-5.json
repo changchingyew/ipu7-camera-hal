@@ -27,11 +27,11 @@
             "output": [1920, 1536],
             "route" : [
               {
-                "name": "max9x a-2", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "name": "max96717 32-0040", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x c", "sinkPad": 4, "sinkStream": 0, "srcPad": 0,
+                "name": "max96724 2-0027", "sinkPad": 0, "sinkStream": 0, "srcPad": 4,
                 "srcStream": 0, "flag": 1
               },
               {
@@ -42,23 +42,23 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "formats": [
               {
-                "name": "isx031 a-2", "pad": 0, "width": 1920, "height": 1536,
+                "name": "isx031 48-001a", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-2", "pad": 0, "width": 1920, "height": 1536,
+                "name": "max96717 32-0040", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-2", "pad": 2, "width": 1920, "height": 1536,
+                "name": "max96717 32-0040", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c", "pad": 4, "width": 1920, "height": 1536,
+                "name": "max96724 2-0027", "pad": 4, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c", "pad": 0, "width": 1920, "height": 1536,
+                "name": "max96724 2-0027", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
@@ -72,15 +72,15 @@
             ],
             "link": [
               {
-                "srcName": "isx031 a-2", "srcPad": 0, "sinkName": "max9x a-2",
+                "srcName": "isx031 48-001a", "srcPad": 0, "sinkName": "max96717 32-0040",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x a-2", "srcPad": 2, "sinkName": "max9x c",
-                "sinkPad": 4, "enable": true
+                "srcName": "max96717 32-0040", "srcPad": 1, "sinkName": "max96724 2-0027",
+                "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x c", "srcPad": 0,
+                "srcName": "max96724 2-0027", "srcPad": 4,
                 "sinkName": "Intel IPU7 CSI2 2", "sinkPad": 0, "enable": true
               },
               {
@@ -96,7 +96,7 @@
                 "name": "Intel IPU7 CSI2 2", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 a-2", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "name": "isx031 48-001a", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           },
@@ -106,11 +106,11 @@
             "output": [1920, 1080],
             "route" : [
               {
-                "name": "max9x a-2", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "name": "max96717 32-0040", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x c", "sinkPad": 4, "sinkStream": 0, "srcPad": 0,
+                "name": "max96724 2-0027", "sinkPad": 0, "sinkStream": 0, "srcPad": 4,
                 "srcStream": 0, "flag": 1
               },
               {
@@ -121,23 +121,23 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "formats": [
               {
-                "name": "isx031 a-2", "pad": 0, "width": 1920, "height": 1536,
+                "name": "isx031 48-001a", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-2", "pad": 0, "width": 1920, "height": 1536,
+                "name": "max96717 32-0040", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-2", "pad": 2, "width": 1920, "height": 1536,
+                "name": "max96717 32-0040", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c", "pad": 4, "width": 1920, "height": 1536,
+                "name": "max96724 2-0027", "pad": 4, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c", "pad": 0, "width": 1920, "height": 1536,
+                "name": "max96724 2-0027", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
@@ -151,15 +151,15 @@
             ],
             "link": [
               {
-                "srcName": "isx031 a-2", "srcPad": 0, "sinkName": "max9x a-2",
+                "srcName": "isx031 48-001a", "srcPad": 0, "sinkName": "max96717 32-0040",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x a-2", "srcPad": 2, "sinkName": "max9x c",
-                "sinkPad": 4, "enable": true
+                "srcName": "max96717 32-0040", "srcPad": 1, "sinkName": "max96724 2-0027",
+                "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x c", "srcPad": 0,
+                "srcName": "max96724 2-0027", "srcPad": 4,
                 "sinkName": "Intel IPU7 CSI2 2", "sinkPad": 0, "enable": true
               },
               {
@@ -175,7 +175,7 @@
                 "name": "Intel IPU7 CSI2 2", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 a", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "name": "isx031 48-001a", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           },
@@ -185,11 +185,11 @@
             "output": [1280, 720],
             "route" : [
               {
-                "name": "max9x a-2", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "name": "max96717 32-0040", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x c", "sinkPad": 4, "sinkStream": 0, "srcPad": 0,
+                "name": "max96724 2-0027", "sinkPad": 0, "sinkStream": 0, "srcPad": 4,
                 "srcStream": 0, "flag": 1
               },
               {
@@ -200,23 +200,23 @@
             "format": "V4L2_PIX_FMT_UYVY",
             "formats": [
               {
-                "name": "isx031 a-2", "pad": 0, "width": 1920, "height": 1536,
+                "name": "isx031 48-001a", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-2", "pad": 0, "width": 1920, "height": 1536,
+                "name": "max96717 32-0040", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-2", "pad": 2, "width": 1920, "height": 1536,
+                "name": "max96717 32-0040", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c", "pad": 4, "width": 1920, "height": 1536,
+                "name": "max96724 2-0027", "pad": 4, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c", "pad": 0, "width": 1920, "height": 1536,
+                "name": "max96724 2-0027", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
@@ -230,15 +230,15 @@
             ],
             "link": [
               {
-                "srcName": "isx031 a-2", "srcPad": 0, "sinkName": "max9x a-2",
+                "srcName": "isx031 48-001a", "srcPad": 0, "sinkName": "max96717 32-0040",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x a-2", "srcPad": 2, "sinkName": "max9x c",
-                "sinkPad": 4, "enable": true
+                "srcName": "max96717 32-0040", "srcPad": 1, "sinkName": "max96724 2-0027",
+                "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x c", "srcPad": 0,
+                "srcName": "max96724 2-0027", "srcPad": 4,
                 "sinkName": "Intel IPU7 CSI2 2", "sinkPad": 0, "enable": true
               },
               {
@@ -254,10 +254,10 @@
                 "name": "Intel IPU7 CSI2 2", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 a", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "name": "isx031 48-001a", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
-          }
+          },
         ],
         "StaticMetadata": {
           "supportedStreamConfig": [
@@ -298,7 +298,7 @@
                 "name": "Intel IPU7 CSI2 2", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 a-2", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "name": "isx031 48-001a", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           },
@@ -315,7 +315,7 @@
                 "name": "Intel IPU7 CSI2 2", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 a-2", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "name": "isx031 48-001a", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           },
@@ -332,85 +332,7 @@
                 "name": "Intel IPU7 CSI2 2", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 a-2", "videoNodeType": "VIDEO_PIXEL_ARRAY"
-              }
-            ]
-          }
-        ],
-        "StaticMetadata": {
-          "supportedStreamConfig": [
-            {
-              "format": "V4L2_PIX_FMT_UYVY", "size": [1920, 1536], "field": 0, "mcId": 0
-            },
-            {
-              "format": "V4L2_PIX_FMT_UYVY", "size": [1920, 1080], "field": 0, "mcId": 1
-            },
-            {
-              "format": "V4L2_PIX_FMT_UYVY", "size": [1280, 720], "field": 0, "mcId": 2
-            }
-          ]
-        },
-
-        "supportedISysSizes": [[1280, 720], [1920, 1080], [1920, 1536]],
-        "supportedISysFormat": ["V4L2_PIX_FMT_UYVY"],
-        "enableAIQ": false,
-        "usePSysProcessor": false
-      },
-      {
-        "name": "isx031x8-5",
-        "description": "isx031 as sensor.",
-        "vcCount": 4,
-        "vcId": 0,
-        "vcGroupId": 0,
-        "MediaCtlConfig": [
-          {
-            "id":  0 ,
-            "configMode": "AUTO",
-            "output": [1920, 1536],
-            "format": "V4L2_PIX_FMT_UYVY",
-            "videonode": [
-              {
-                "name": "Intel IPU7 ISYS Capture 16", "videoNodeType": "VIDEO_GENERIC"
-              },
-              {
-                "name": "Intel IPU7 CSI2 2", "videoNodeType": "VIDEO_ISYS_RECEIVER"
-              },
-              {
-                "name": "isx031 a-2", "videoNodeType": "VIDEO_PIXEL_ARRAY"
-              }
-            ]
-          },
-          {
-            "id":  1 ,
-            "configMode": "AUTO",
-            "output": [1920, 1080],
-            "format": "V4L2_PIX_FMT_UYVY",
-            "videonode": [
-              {
-                "name": "Intel IPU7 ISYS Capture 16", "videoNodeType": "VIDEO_GENERIC"
-              },
-              {
-                "name": "Intel IPU7 CSI2 2", "videoNodeType": "VIDEO_ISYS_RECEIVER"
-              },
-              {
-                "name": "isx031 a-2", "videoNodeType": "VIDEO_PIXEL_ARRAY"
-              }
-            ]
-          },
-          {
-            "id":  2 ,
-            "configMode": "AUTO",
-            "output": [1280, 720],
-            "format": "V4L2_PIX_FMT_UYVY",
-            "videonode": [
-              {
-                "name": "Intel IPU7 ISYS Capture 16", "videoNodeType": "VIDEO_GENERIC"
-              },
-              {
-                "name": "Intel IPU7 CSI2 2", "videoNodeType": "VIDEO_ISYS_RECEIVER"
-              },
-              {
-                "name": "isx031 a-2", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "name": "isx031 48-001a", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           }
