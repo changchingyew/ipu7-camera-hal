@@ -30,38 +30,38 @@
             "output": [1920, 1536],
             "route" : [
               {
-                "name": "max9x d-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "acpiName": "INTC1138:03", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 7, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1139:00", "sinkPad": 3, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 3, "flag": 1
               },
               {
-                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 4,
-                "srcStream": 3, "flag": 1
+                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 6,
+                "srcStream": 0, "flag": 1
               }
             ],
             "format": "V4L2_PIX_FMT_UYVY",
             "formats": [
               {
-                "name": "isx031 d-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 7, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 3, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
@@ -69,21 +69,21 @@
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
-                "name": "Intel IPU7 CSI2 0", "pad": 4, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
+                "name": "Intel IPU7 CSI2 0", "pad": 6, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               }
             ],
             "link": [
               {
-                "srcName": "isx031 d-0", "srcPad": 0, "sinkName": "max9x d-0",
+                "srcAcpiName": "INTC1031:03", "srcPad": 0, "sinkAcpiName": "INTC1138:03",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x d-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 7, "enable": true
+                "srcAcpiName": "INTC1138:03", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 3, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -99,48 +99,48 @@
                 "name": "Intel IPU7 CSI2 0", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 d-0", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "acpiName": "INTC1031:03", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           },
           {
-            "id":  0 ,
+            "id":  1 ,
             "configMode": "AUTO",
             "output": [1920, 1080],
             "route" : [
               {
-                "name": "max9x d-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "acpiName": "INTC1138:03", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 7, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1139:00", "sinkPad": 3, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 3, "flag": 1
               },
               {
-                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 4,
-                "srcStream": 3, "flag": 1
+                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 6,
+                "srcStream": 0, "flag": 1
               }
             ],
             "format": "V4L2_PIX_FMT_UYVY",
             "formats": [
               {
-                "name": "isx031 d-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 7, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 3, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
@@ -148,21 +148,21 @@
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
-                "name": "Intel IPU7 CSI2 0", "pad": 4, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
+                "name": "Intel IPU7 CSI2 0", "pad": 6, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               }
             ],
             "link": [
               {
-                "srcName": "isx031 d-0", "srcPad": 0, "sinkName": "max9x d-0",
+                "srcAcpiName": "INTC1031:03", "srcPad": 0, "sinkAcpiName": "INTC1138:03",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x d-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 7, "enable": true
+                "srcAcpiName": "INTC1138:03", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 3, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -178,7 +178,7 @@
                 "name": "Intel IPU7 CSI2 0", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 d-0", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "acpiName": "INTC1031:03", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           },
@@ -188,38 +188,38 @@
             "output": [1280, 720],
             "route" : [
               {
-                "name": "max9x d-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "acpiName": "INTC1138:03", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 7, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1139:00", "sinkPad": 3, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 3, "flag": 1
               },
               {
-                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 4,
-                "srcStream": 3, "flag": 1
+                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 6,
+                "srcStream": 0, "flag": 1
               }
             ],
             "format": "V4L2_PIX_FMT_UYVY",
             "formats": [
               {
-                "name": "isx031 d-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 7, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 3, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
@@ -227,21 +227,21 @@
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
-                "name": "Intel IPU7 CSI2 0", "pad": 4, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
+                "name": "Intel IPU7 CSI2 0", "pad": 6, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               }
             ],
             "link": [
               {
-                "srcName": "isx031 d-0", "srcPad": 0, "sinkName": "max9x d-0",
+                "srcAcpiName": "INTC1031:03", "srcPad": 0, "sinkAcpiName": "INTC1138:03",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x d-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 7, "enable": true
+                "srcAcpiName": "INTC1138:03", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 3, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -257,7 +257,7 @@
                 "name": "Intel IPU7 CSI2 0", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 d-0", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "acpiName": "INTC1031:03", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           }
@@ -294,11 +294,11 @@
             "output": [1920, 1536],
             "route" : [
               {
-                "name": "max9x a-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "acpiName": "INTC1138:00", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 4, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1139:00", "sinkPad": 0, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 0, "flag": 1
               },
               {
@@ -306,62 +306,62 @@
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x b-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "acpiName": "INTC1138:01", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 5, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1139:00", "sinkPad": 1, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 1, "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 1, "srcPad": 2,
-                "srcStream": 1, "flag": 1
-              },
-              {
-                "name": "max9x c-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 6, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1138:02", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
+                "srcStream": 0, "flag": 1
+              },
+              {
+                "acpiName": "INTC1139:00", "sinkPad": 2, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 2, "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 2, "srcPad": 3,
-                "srcStream": 2, "flag": 1
-              },
-              {
-                "name": "max9x d-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 7, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1138:03", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
+                "srcStream": 0, "flag": 1
+              },
+              {
+                "acpiName": "INTC1139:00", "sinkPad": 3, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 3, "flag": 1
               },
               {
-                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 4,
-                "srcStream": 3, "flag": 1
+                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 6,
+                "srcStream": 0, "flag": 1
               }
             ],
             "format": "V4L2_PIX_FMT_UYVY",
             "formats": [
               {
-                "name": "isx031 a-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:00", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:00", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:00", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 4, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
@@ -373,23 +373,23 @@
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "isx031 b-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:01", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x b-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:01", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x b-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:01", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 5, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 1
               },
               {
@@ -398,26 +398,26 @@
               },
               {
                 "name": "Intel IPU7 CSI2 0", "pad": 2, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 1
-              },
-              {
-                "name": "isx031 c-0", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:02", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:02", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 6, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:02", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 2, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
+              },
+              {
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 2
               },
               {
@@ -426,26 +426,26 @@
               },
               {
                 "name": "Intel IPU7 CSI2 0", "pad": 3, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 2
-              },
-              {
-                "name": "isx031 d-0", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 7, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 3, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
+              },
+              {
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
@@ -453,21 +453,21 @@
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
-                "name": "Intel IPU7 CSI2 0", "pad": 4, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
+                "name": "Intel IPU7 CSI2 0", "pad": 6, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               }
             ],
             "link": [
               {
-                "srcName": "isx031 a-0", "srcPad": 0, "sinkName": "max9x a-0",
+                "srcAcpiName": "INTC1031:00", "srcPad": 0, "sinkAcpiName": "INTC1138:00",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x a-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 4, "enable": true
+                "srcAcpiName": "INTC1138:00", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -475,15 +475,15 @@
                 "sinkName": "Intel IPU7 ISYS Capture 0", "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "isx031 b-0", "srcPad": 0, "sinkName": "max9x b-0",
+                "srcAcpiName": "INTC1031:01", "srcPad": 0, "sinkAcpiName": "INTC1138:01",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x b-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 5, "enable": true
+                "srcAcpiName": "INTC1138:01", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 1, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -491,15 +491,15 @@
                 "sinkName": "Intel IPU7 ISYS Capture 1", "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "isx031 c-0", "srcPad": 0, "sinkName": "max9x c-0",
+                "srcAcpiName": "INTC1031:02", "srcPad": 0, "sinkAcpiName": "INTC1138:02",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x c-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 6, "enable": true
+                "srcAcpiName": "INTC1138:02", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 2, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -507,15 +507,15 @@
                 "sinkName": "Intel IPU7 ISYS Capture 2", "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "isx031 d-0", "srcPad": 0, "sinkName": "max9x d-0",
+                "srcAcpiName": "INTC1031:03", "srcPad": 0, "sinkAcpiName": "INTC1138:03",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x d-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 7, "enable": true
+                "srcAcpiName": "INTC1138:03", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 3, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -531,7 +531,7 @@
                 "name": "Intel IPU7 CSI2 0", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 d-0", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "acpiName": "INTC1031:03", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           },
@@ -541,11 +541,11 @@
             "output": [1920, 1080],
             "route" : [
               {
-                "name": "max9x a-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "acpiName": "INTC1138:00", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 4, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1139:00", "sinkPad": 0, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 0, "flag": 1
               },
               {
@@ -553,62 +553,62 @@
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x b-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "acpiName": "INTC1138:01", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 5, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1139:00", "sinkPad": 1, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 1, "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 1, "srcPad": 2,
-                "srcStream": 1, "flag": 1
-              },
-              {
-                "name": "max9x c-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 6, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1138:02", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
+                "srcStream": 0, "flag": 1
+              },
+              {
+                "acpiName": "INTC1139:00", "sinkPad": 2, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 2, "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 2, "srcPad": 3,
-                "srcStream": 2, "flag": 1
-              },
-              {
-                "name": "max9x d-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 7, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1138:03", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
+                "srcStream": 0, "flag": 1
+              },
+              {
+                "acpiName": "INTC1139:00", "sinkPad": 3, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 3, "flag": 1
               },
               {
-                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 4,
-                "srcStream": 3, "flag": 1
+                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 6,
+                "srcStream": 0, "flag": 1
               }
             ],
             "format": "V4L2_PIX_FMT_UYVY",
             "formats": [
               {
-                "name": "isx031 a-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:00", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:00", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:00", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 4, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
@@ -620,23 +620,23 @@
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "isx031 b-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:01", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x b-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:01", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x b-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:01", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 5, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 1
               },
               {
@@ -645,26 +645,26 @@
               },
               {
                 "name": "Intel IPU7 CSI2 0", "pad": 2, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 1
-              },
-              {
-                "name": "isx031 c-0", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:02", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:02", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 6, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:02", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 2, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
+              },
+              {
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 2
               },
               {
@@ -673,26 +673,26 @@
               },
               {
                 "name": "Intel IPU7 CSI2 0", "pad": 3, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 2
-              },
-              {
-                "name": "isx031 d-0", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 7, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 3, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
+              },
+              {
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
@@ -700,21 +700,21 @@
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
-                "name": "Intel IPU7 CSI2 0", "pad": 4, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
+                "name": "Intel IPU7 CSI2 0", "pad": 6, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               }
             ],
             "link": [
               {
-                "srcName": "isx031 a-0", "srcPad": 0, "sinkName": "max9x a-0",
+                "srcAcpiName": "INTC1031:00", "srcPad": 0, "sinkAcpiName": "INTC1138:00",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x a-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 4, "enable": true
+                "srcAcpiName": "INTC1138:00", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -722,15 +722,15 @@
                 "sinkName": "Intel IPU7 ISYS Capture 0", "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "isx031 b-0", "srcPad": 0, "sinkName": "max9x b-0",
+                "srcAcpiName": "INTC1031:01", "srcPad": 0, "sinkAcpiName": "INTC1138:01",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x b-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 5, "enable": true
+                "srcAcpiName": "INTC1138:01", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 1, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -738,15 +738,15 @@
                 "sinkName": "Intel IPU7 ISYS Capture 1", "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "isx031 c-0", "srcPad": 0, "sinkName": "max9x c-0",
+                "srcAcpiName": "INTC1031:02", "srcPad": 0, "sinkAcpiName": "INTC1138:02",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x c-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 6, "enable": true
+                "srcAcpiName": "INTC1138:02", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 2, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -754,15 +754,15 @@
                 "sinkName": "Intel IPU7 ISYS Capture 2", "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "isx031 d-0", "srcPad": 0, "sinkName": "max9x d-0",
+                "srcAcpiName": "INTC1031:03", "srcPad": 0, "sinkAcpiName": "INTC1138:03",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x d-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 7, "enable": true
+                "srcAcpiName": "INTC1138:03", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 3, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -778,7 +778,7 @@
                 "name": "Intel IPU7 CSI2 0", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 d-0", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "acpiName": "INTC1031:03", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           },
@@ -788,11 +788,11 @@
             "output": [1280, 720],
             "route" : [
               {
-                "name": "max9x a-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "acpiName": "INTC1138:00", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 4, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1139:00", "sinkPad": 0, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 0, "flag": 1
               },
               {
@@ -800,62 +800,62 @@
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x b-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
+                "acpiName": "INTC1138:01", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 5, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1139:00", "sinkPad": 1, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 1, "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 1, "srcPad": 2,
-                "srcStream": 1, "flag": 1
-              },
-              {
-                "name": "max9x c-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 6, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1138:02", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
+                "srcStream": 0, "flag": 1
+              },
+              {
+                "acpiName": "INTC1139:00", "sinkPad": 2, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 2, "flag": 1
               },
               {
                 "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 2, "srcPad": 3,
-                "srcStream": 2, "flag": 1
-              },
-              {
-                "name": "max9x d-0", "sinkPad": 0, "sinkStream": 0, "srcPad": 2,
                 "srcStream": 0, "flag": 1
               },
               {
-                "name": "max9x a", "sinkPad": 7, "sinkStream": 0, "srcPad": 0,
+                "acpiName": "INTC1138:03", "sinkPad": 0, "sinkStream": 0, "srcPad": 1,
+                "srcStream": 0, "flag": 1
+              },
+              {
+                "acpiName": "INTC1139:00", "sinkPad": 3, "sinkStream": 0, "srcPad": 6,
                 "srcStream": 3, "flag": 1
               },
               {
-                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 4,
-                "srcStream": 3, "flag": 1
+                "name": "Intel IPU7 CSI2 0", "sinkPad": 0, "sinkStream": 3, "srcPad": 6,
+                "srcStream": 0, "flag": 1
               }
             ],
             "format": "V4L2_PIX_FMT_UYVY",
             "formats": [
               {
-                "name": "isx031 a-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:00", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:00", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:00", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 4, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
@@ -867,23 +867,23 @@
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "isx031 b-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:01", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x b-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:01", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x b-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:01", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 5, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 1
               },
               {
@@ -892,26 +892,26 @@
               },
               {
                 "name": "Intel IPU7 CSI2 0", "pad": 2, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 1
-              },
-              {
-                "name": "isx031 c-0", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:02", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x c-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:02", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 6, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:02", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 2, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
+              },
+              {
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 2
               },
               {
@@ -920,26 +920,26 @@
               },
               {
                 "name": "Intel IPU7 CSI2 0", "pad": 3, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 2
-              },
-              {
-                "name": "isx031 d-0", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1031:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x d-0", "pad": 2, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 0, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 7, "width": 1920, "height": 1536,
+                "acpiName": "INTC1138:03", "pad": 1, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               },
               {
-                "name": "max9x a", "pad": 0, "width": 1920, "height": 1536,
+                "acpiName": "INTC1139:00", "pad": 3, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
+              },
+              {
+                "acpiName": "INTC1139:00", "pad": 6, "width": 1920, "height": 1536,
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
@@ -947,21 +947,21 @@
                 "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
               },
               {
-                "name": "Intel IPU7 CSI2 0", "pad": 4, "width": 1920, "height": 1536,
-                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 3
+                "name": "Intel IPU7 CSI2 0", "pad": 6, "width": 1920, "height": 1536,
+                "format": "V4L2_MBUS_FMT_UYVY8_1X16", "stream": 0
               }
             ],
             "link": [
               {
-                "srcName": "isx031 a-0", "srcPad": 0, "sinkName": "max9x a-0",
+                "srcAcpiName": "INTC1031:00", "srcPad": 0, "sinkAcpiName": "INTC1138:00",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x a-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 4, "enable": true
+                "srcAcpiName": "INTC1138:00", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -969,15 +969,15 @@
                 "sinkName": "Intel IPU7 ISYS Capture 0", "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "isx031 b-0", "srcPad": 0, "sinkName": "max9x b-0",
+                "srcAcpiName": "INTC1031:01", "srcPad": 0, "sinkAcpiName": "INTC1138:01",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x b-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 5, "enable": true
+                "srcAcpiName": "INTC1138:01", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 1, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -985,15 +985,15 @@
                 "sinkName": "Intel IPU7 ISYS Capture 1", "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "isx031 c-0", "srcPad": 0, "sinkName": "max9x c-0",
+                "srcAcpiName": "INTC1031:02", "srcPad": 0, "sinkAcpiName": "INTC1138:02",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x c-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 6, "enable": true
+                "srcAcpiName": "INTC1138:02", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 2, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -1001,15 +1001,15 @@
                 "sinkName": "Intel IPU7 ISYS Capture 2", "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "isx031 d-0", "srcPad": 0, "sinkName": "max9x d-0",
+                "srcAcpiName": "INTC1031:03", "srcPad": 0, "sinkAcpiName": "INTC1138:03",
                 "sinkPad": 0, "enable": true
               },
               {
-                "srcName": "max9x d-0", "srcPad": 2, "sinkName": "max9x a",
-                "sinkPad": 7, "enable": true
+                "srcAcpiName": "INTC1138:03", "srcPad": 1, "sinkAcpiName": "INTC1139:00",
+                "sinkPad": 3, "enable": true
               },
               {
-                "srcName": "max9x a", "srcPad": 0,
+                "srcAcpiName": "INTC1139:00", "srcPad": 6,
                 "sinkName": "Intel IPU7 CSI2 0", "sinkPad": 0, "enable": true
               },
               {
@@ -1025,85 +1025,7 @@
                 "name": "Intel IPU7 CSI2 0", "videoNodeType": "VIDEO_ISYS_RECEIVER"
               },
               {
-                "name": "isx031 d-0", "videoNodeType": "VIDEO_PIXEL_ARRAY"
-              }
-            ]
-          }
-        ],
-        "StaticMetadata": {
-          "supportedStreamConfig": [
-            {
-              "format": "V4L2_PIX_FMT_UYVY", "size": [1920, 1536], "field": 0, "mcId": 0
-            },
-            {
-              "format": "V4L2_PIX_FMT_UYVY", "size": [1920, 1080], "field": 0, "mcId": 1
-            },
-            {
-              "format": "V4L2_PIX_FMT_UYVY", "size": [1280, 720], "field": 0, "mcId": 2
-            }
-          ]
-        },
-
-        "supportedISysSizes": [[1280, 720], [1920, 1080], [1920, 1536]],
-        "supportedISysFormat": ["V4L2_PIX_FMT_UYVY"],
-        "enableAIQ": false,
-        "usePSysProcessor": false
-      },
-      {
-        "name": "isx031x8-4",
-        "description": "isx031 ds sensor.",
-        "vcCount": 4,
-        "vcId": 3,
-        "vcGroupId": 0,
-        "MediaCtlConfig": [
-          {
-            "id":  0 ,
-            "configMode": "AUTO",
-            "output": [1920, 1536],
-            "format": "V4L2_PIX_FMT_UYVY",
-            "videonode": [
-              {
-                "name": "Intel IPU7 ISYS Capture 3", "videoNodeType": "VIDEO_GENERIC"
-              },
-              {
-                "name": "Intel IPU7 CSI2 0", "videoNodeType": "VIDEO_ISYS_RECEIVER"
-              },
-              {
-                "name": "isx031 d-0", "videoNodeType": "VIDEO_PIXEL_ARRAY"
-              }
-            ]
-          },
-          {
-            "id":  1 ,
-            "configMode": "AUTO",
-            "output": [1920, 1080],
-            "format": "V4L2_PIX_FMT_UYVY",
-            "videonode": [
-              {
-                "name": "Intel IPU7 ISYS Capture 3", "videoNodeType": "VIDEO_GENERIC"
-              },
-              {
-                "name": "Intel IPU7 CSI2 0", "videoNodeType": "VIDEO_ISYS_RECEIVER"
-              },
-              {
-                "name": "isx031 d-0", "videoNodeType": "VIDEO_PIXEL_ARRAY"
-              }
-            ]
-          },
-          {
-            "id":  2 ,
-            "configMode": "AUTO",
-            "output": [1280, 720],
-            "format": "V4L2_PIX_FMT_UYVY",
-            "videonode": [
-              {
-                "name": "Intel IPU7 ISYS Capture 3", "videoNodeType": "VIDEO_GENERIC"
-              },
-              {
-                "name": "Intel IPU7 CSI2 0", "videoNodeType": "VIDEO_ISYS_RECEIVER"
-              },
-              {
-                "name": "isx031 d-0", "videoNodeType": "VIDEO_PIXEL_ARRAY"
+                "acpiName": "INTC1031:03", "videoNodeType": "VIDEO_PIXEL_ARRAY"
               }
             ]
           }
