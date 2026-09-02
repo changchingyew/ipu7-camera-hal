@@ -1014,6 +1014,56 @@ bool MediaControl::isMediaSourceEntity(const MediaEntity* entity) {
     return true;
 }
 
+int MediaControl::discoverActiveChain(const std::string& startEntityName,
+                                      std::vector<DiscoveredNode>* chain) {
+    CheckAndLogError(!chain, BAD_VALUE, "%s, chain is nullptr", __func__);
+
+    MediaEntity* cur = getEntityByName(startEntityName);
+    CheckAndLogError(!cur, NAME_NOT_FOUND, "%s, entity %s not found", __func__,
+                     startEntityName.c_str());
+
+    chain->clear();
+    int sinkPad = -1;
+    // Follow the media graph as far as it is already linked/enabled, i.e. as it was
+    // configured out-of-band. Every entity in this kind of capture chain (sensor,
+    // optional serializer/deserializer bridge, CSI2 receiver) has exactly one enabled
+    // outgoing link, so a linear walk is sufficient; internal 1-to-N multiplexing
+    // (e.g. GMSL virtual channels) is handled by the entity's routing table, not by
+    // multiple physical links, and is discovered separately via GetRouting().
+    while (true) {
+        DiscoveredNode node;
+        node.entityName = cur->info.name;
+        node.devName = cur->devname;
+        node.entityType = cur->info.type;
+        node.sinkPad = sinkPad;
+        chain->push_back(node);
+
+        if (cur->info.type == MEDIA_ENT_T_V4L2_VIDEO) {
+            // Reached the terminal video device node, discovery complete.
+            return OK;
+        }
+
+        MediaLink* outLink = nullptr;
+        for (unsigned int i = 0U; i < cur->numLinks; ++i) {
+            MediaLink* link = &cur->links[i];
+            if (!(link->flags & MEDIA_LNK_FL_ENABLED)) continue;
+            if (link->source->entity != cur) continue;
+            outLink = link;
+            break;
+        }
+        if (!outLink) {
+            LOGW("%s, entity %s has no enabled outgoing link; pipeline not configured "
+                 "out-of-band (yet)?",
+                 __func__, cur->info.name);
+            return UNKNOWN_ERROR;
+        }
+
+        chain->back().srcPad = outLink->source->index;
+        sinkPad = outLink->sink->index;
+        cur = outLink->sink->entity;
+    }
+}
+
 bool MediaControl::checkHasSource(const MediaEntity* sink, const std::string& source) {
     for (unsigned int i = 0U; i < sink->numLinks; ++i) {
         if (sink->links[i].sink->entity == sink) {

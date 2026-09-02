@@ -802,6 +802,25 @@ unsigned int CameraUtils::getMBusFormat(int cameraId, unsigned int isysFmt) {
     return pixelCode;
 }
 
+int CameraUtils::getPixelFormatFromMBusCode(unsigned int mbusCode) {
+    switch (mbusCode) {
+        case V4L2_MBUS_FMT_UYVY8_1X16:
+        case V4L2_MBUS_FMT_UYVY8_2X8:
+            return V4L2_PIX_FMT_UYVY;
+        case V4L2_MBUS_FMT_YUYV8_1X16:
+            return V4L2_PIX_FMT_YUYV;
+        case MEDIA_BUS_FMT_RGB888_1X24:
+            return V4L2_PIX_FMT_BGR24;
+        case MEDIA_BUS_FMT_RGB565_1X16:
+            return V4L2_PIX_FMT_RGB565;
+        default:
+            // Bayer/RAW mbus codes need ISP demosaic; not a 1:1 passthrough mapping.
+            LOGW("%s: mbus code %s has no self-discoverable 1:1 output format", __func__,
+                 pixelCode2String(mbusCode));
+            return 0;
+    }
+}
+
 std::vector<string> CameraUtils::splitString(const char* srcStr, char delim) {
     std::vector<string> tokens;
     std::stringstream ss(srcStr);

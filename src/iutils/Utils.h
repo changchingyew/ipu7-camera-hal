@@ -268,6 +268,16 @@ camera_awb_mode_t getAwbModeByName(const char* awbName);
 unsigned int getMBusFormat(int cameraId, unsigned int isysFmt);
 
 /**
+ * Reverse of getMBusFormat(): map a media bus (subdev) format code discovered live from
+ * a v4l2 subdev (e.g. via VIDIOC_SUBDEV_G_FMT) back to the V4L2 pixel format the ISYS
+ * capture video node will produce for it. Only covers the YUV/RGB "passthrough" mbus
+ * codes where the ISYS capture node copies the wire format 1:1 with no ISP/PSys
+ * processing involved (e.g. HDMI bridges, GMSL YUV sensors); returns 0 for mbus codes
+ * that require Bayer demosaic/ISP processing (no 1:1 output format to self-discover).
+ */
+int getPixelFormatFromMBusCode(unsigned int mbusCode);
+
+/**
  * Spit the given srcStr by delim into a vector of sub strings.
  */
 std::vector<std::string> splitString(const char* srcStr, char delim);

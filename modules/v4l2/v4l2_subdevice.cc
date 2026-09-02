@@ -127,6 +127,90 @@ int V4L2Subdevice::GetPadFormat(int pad_index, int* width, int* height, int* cod
     return ret;
 }
 
+int V4L2Subdevice::GetPadFormat(int pad_index, int stream_index, int* width, int* height,
+                                int* code, int* field) {
+    LOG1("@%s", __func__);
+
+    if (!width || !height || !code || !field) {
+        LOGE("%s: Device node %s some of parameters is nullptr", __func__, name_.c_str());
+        return -EINVAL;
+    }
+    struct v4l2_subdev_format format = {};
+
+    format.pad = pad_index;
+    format.stream = stream_index;
+    format.which = V4L2_SUBDEV_FORMAT_ACTIVE;
+    int ret = GetFormat(&format);
+    if (ret == 0) {
+        *width = format.format.width;
+        *height = format.format.height;
+        *code = format.format.code;
+        *field = format.format.field;
+    }
+    return ret;
+}
+
+int V4L2Subdevice::EnumFrameSize(int pad_index, uint32_t code, int index, int* width,
+                                 int* height) {
+    LOG1("@%s", __func__);
+
+    if (!width || !height) {
+        LOGE("%s: Device node %s some of parameters is nullptr", __func__, name_.c_str());
+        return -EINVAL;
+    }
+
+    struct v4l2_subdev_frame_size_enum fse = {};
+    fse.index = index;
+    fse.pad = pad_index;
+    fse.code = code;
+    fse.which = V4L2_SUBDEV_FORMAT_ACTIVE;
+
+    int ret = ::ioctl(fd_, VIDIOC_SUBDEV_ENUM_FRAME_SIZE, &fse);
+    if (ret < 0) {
+        // Expected once 'index' runs past the last supported frame size; not logged as
+        // an error since callers use this to enumerate until failure.
+        LOG2("%s: Device node %s IOCTL VIDIOC_SUBDEV_ENUM_FRAME_SIZE (index %d) error: %s",
+             __func__, name_.c_str(), index, strerror(errno));
+        return ret;
+    }
+
+    // Discrete frame size entries report min == max; report the max as "the" size.
+    *width = fse.max_width;
+    *height = fse.max_height;
+    return 0;
+}
+
+int V4L2Subdevice::EnumFrameInterval(int pad_index, uint32_t code, int width, int height,
+                                     int index, int* numerator, int* denominator) {
+    LOG1("@%s", __func__);
+
+    if (!numerator || !denominator) {
+        LOGE("%s: Device node %s some of parameters is nullptr", __func__, name_.c_str());
+        return -EINVAL;
+    }
+
+    struct v4l2_subdev_frame_interval_enum fie = {};
+    fie.index = index;
+    fie.pad = pad_index;
+    fie.code = code;
+    fie.width = width;
+    fie.height = height;
+    fie.which = V4L2_SUBDEV_FORMAT_ACTIVE;
+
+    int ret = ::ioctl(fd_, VIDIOC_SUBDEV_ENUM_FRAME_INTERVAL, &fie);
+    if (ret < 0) {
+        // Expected once 'index' runs past the last supported frame interval; not logged
+        // as an error since callers use this to enumerate until failure.
+        LOG2("%s: Device node %s IOCTL VIDIOC_SUBDEV_ENUM_FRAME_INTERVAL (index %d) error: %s",
+             __func__, name_.c_str(), index, strerror(errno));
+        return ret;
+    }
+
+    *numerator = fie.interval.numerator;
+    *denominator = fie.interval.denominator;
+    return 0;
+}
+
 int V4L2Subdevice::SetSelection(const struct v4l2_subdev_selection& selection) {
     LOG1("@%s", __func__);
 

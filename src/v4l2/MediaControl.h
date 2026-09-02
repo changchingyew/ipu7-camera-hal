@@ -156,6 +156,24 @@ struct McVideoNode {
     McVideoNode() { videoNodeType = VIDEO_GENERIC; }
 };
 
+/**
+ * \struct DiscoveredNode
+ *
+ * One hop of an already-active (enabled) media link chain, as found by
+ * MediaControl::discoverActiveChain(). Used for self discovery of the
+ * MediaCtlConf topology, instead of authoring it by hand in JSON, for
+ * pipelines whose links/routing have already been configured out-of-band
+ * (e.g. by a udev/board-init service) before the HAL starts.
+ */
+struct DiscoveredNode {
+    std::string entityName;
+    std::string devName;
+    int entityType;  // media_entity_desc.type, e.g. MEDIA_ENT_T_V4L2_SUBDEV/_V4L2_VIDEO
+    int sinkPad;     // pad the signal enters this entity on, -1 for the start entity
+    int srcPad;      // pad the signal leaves this entity on, -1 for the terminal video node
+    DiscoveredNode() : entityType(0), sinkPad(-1), srcPad(-1) {}
+};
+
 struct MediaCtlConf {
     std::vector<McCtl> ctls;
     std::vector<McLink> links;
@@ -252,6 +270,28 @@ class MediaControl {
 
     int getLensName(std::string* lensName);
     bool isMediaSourceEntity(const MediaEntity* entity);
+
+    /**
+     * \brief Discover an already-active link chain, self discovery entry point.
+     *
+     * Starting at 'startEntityName' (typically a sensor entity), follow the single
+     * MEDIA_LNK_FL_ENABLED source link out of each entity until a plain video device
+     * node (MEDIA_ENT_T_V4L2_VIDEO) is reached. This assumes the links have already
+     * been set up out-of-band (e.g. by a udev/board-init service, or default kernel
+     * routing) prior to the HAL starting; it never modifies the graph.
+     *
+     * \param startEntityName: name of the entity to start the walk from.
+     * \param chain: filled with one DiscoveredNode per hop, in order, including the
+     *               start entity and the terminal video node.
+     *
+     * \return OK if a complete chain to a video node was found, error code otherwise
+     *         (e.g. NAME_NOT_FOUND if startEntityName doesn't exist, or UNKNOWN_ERROR
+     *         if the chain dead-ends without reaching a video node, which normally
+     *         means the pipeline hasn't actually been configured out-of-band yet).
+     */
+    int discoverActiveChain(const std::string& startEntityName,
+                            std::vector<DiscoveredNode>* chain);
+
     bool checkAvailableSensor(const std::string& sensorEntityName);
     bool checkAvailableSensor(const std::string& sensorEntityName,
                               const std::string& sinkEntityName);

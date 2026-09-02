@@ -527,6 +527,57 @@ class V4L2Subdevice final : public V4L2Device {
     //    0 on success; corresponding error code on failure.
     int GetPadFormat(int pad_index, int* width, int* height, int* code);
 
+    // This method gets the active format of a sub-device pad/stream, self discovery
+    // variant used to read back a pipeline configured out-of-band (e.g. by a
+    // udev/board-init service) instead of one set by this process via SetFormat().
+    //
+    // Args:
+    //    |pad_index|: pad number.
+    //    |stream_index|: stream number (V4L2 streams API), 0 for non-streams devices.
+    //    |width|: image width.
+    //    |height|: image height.
+    //    |code|: media bus format code.
+    //    |field|: V4L2 field (interlace) value.
+    //
+    // Returns:
+    //    0 on success; corresponding error code on failure.
+    int GetPadFormat(int pad_index, int stream_index, int* width, int* height, int* code,
+                     int* field);
+
+    // This method enumerates one discrete frame size supported by a sub-device pad for
+    // a given media bus code, used for self discovery of the sensor's native modes
+    // (VIDIOC_SUBDEV_ENUM_FRAME_SIZE) without switching the currently active format.
+    //
+    // Args:
+    //    |pad_index|: pad number.
+    //    |code|: media bus format code to enumerate sizes for.
+    //    |index|: enumeration index, starting at 0; caller increments until failure.
+    //    |width|: filled with the frame width for this index.
+    //    |height|: filled with the frame height for this index.
+    //
+    // Returns:
+    //    0 on success; -1 with errno == EINVAL once 'index' is out of range.
+    int EnumFrameSize(int pad_index, uint32_t code, int index, int* width, int* height);
+
+    // This method enumerates one discrete frame interval (fps) supported by a
+    // sub-device pad for a given media bus code and frame size, used for self
+    // discovery of the sensor's supported fps range (VIDIOC_SUBDEV_ENUM_FRAME_INTERVAL)
+    // without switching the currently active format/frame rate.
+    //
+    // Args:
+    //    |pad_index|: pad number.
+    //    |code|: media bus format code.
+    //    |width|: frame width to query intervals for.
+    //    |height|: frame height to query intervals for.
+    //    |index|: enumeration index, starting at 0; caller increments until failure.
+    //    |numerator|: filled with the frame interval numerator.
+    //    |denominator|: filled with the frame interval denominator.
+    //
+    // Returns:
+    //    0 on success; -1 with errno == EINVAL once 'index' is out of range.
+    int EnumFrameInterval(int pad_index, uint32_t code, int width, int height, int index,
+                          int* numerator, int* denominator);
+
     int SetRouting(v4l2_subdev_route* routes, uint32_t numRoutes);
     int GetRouting(v4l2_subdev_route* routes, uint32_t* numRoutes);
 
