@@ -27,9 +27,10 @@
 // CSI port/I2C bus the same way a hand-authored "$I2CBUS" placeholder would (see
 // CameraSensorsParser::runAutoDiscovery). Once a sensor is listed here its
 // "sensors/<name>.json" file is never opened at all -- it can be deleted entirely
-// (no need to even keep a stub with "discoverSensorEntity" in it, since
-// runAutoDiscovery derives the subdev entity name internally). Sensors not listed
-// in "autoDiscoverSensors" -- "ov13b10-uf" here -- fall back to loading
+// (the older per-sensor "discoverSensorEntity" JSON key has been removed --
+// runAutoDiscovery derives the subdev entity name internally, so
+// "autoDiscoverSensors" is now the only way to trigger self discovery). Sensors
+// not listed in "autoDiscoverSensors" -- "ov13b10-uf" here -- fall back to loading
 // "sensors/<name>.json" exactly as before, so Bayer/RAW sensors needing ISP/PSys/3A
 // tuning can coexist on the same board as self-discovered ones. Self discovery still
 // requires each listed sensor's graph to have already been linked/routed out-of-band

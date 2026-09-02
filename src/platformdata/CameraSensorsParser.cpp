@@ -966,11 +966,6 @@ void CameraSensorsParser::parseSensorSection(const Json::Value& node) {
 
     if (node.isMember("MediaCtlConfig")) {
         parseMediaCtlConfigSection(node["MediaCtlConfig"]);
-    } else if (node.isMember("discoverSensorEntity")) {
-        // Self discovery path: no hand-authored MediaCtlConfig/supportedStreamConfig,
-        // instead query the live v4l2 subdevs whose links/routing have already been
-        // configured out-of-band. See SensorNodeDiscovery for details.
-        discoverSensorMediaCtlConfig(node["discoverSensorEntity"].asString());
     }
     if (node.isMember("StaticMetadata")) {
         parseStaticMetaDataSection(node["StaticMetadata"]);
