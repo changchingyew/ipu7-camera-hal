@@ -1212,6 +1212,40 @@ void CameraSensorsParser::updateLensName() {
     }
 }
 
+bool CameraSensorsParser::runAutoDiscovery(const std::string& sensorName) {
+    mCurCam = new PlatformData::StaticCfg::CameraInfo;
+    mCurCam->sensorName = sensorName;
+    mCurCam->sensorDescription = sensorName + " (self discovered)";
+
+    resolveCsiPortAndI2CBus();
+    updateNVMDir();
+    updateLensName();
+
+    // "isx031-1" -> base sensor name "isx031"; the live subdev entity name is then
+    // "<base sensor name> <I2CBus>", e.g. "isx031 a-0", exactly what "$I2CBUS" resolves
+    // to in a hand-authored MediaCtlConfig (see resolveI2CBusString()).
+    std::string baseSensorName = sensorName;
+    auto dashPos = baseSensorName.find_first_of('-');
+    if (dashPos != std::string::npos) {
+        baseSensorName = baseSensorName.substr(0, dashPos);
+    }
+    const std::string sensorEntityName = baseSensorName + " " + mI2CBus;
+
+    discoverSensorMediaCtlConfig(sensorEntityName);
+
+    bool ok = !mCurCam->mMediaCtlConfs.empty();
+    if (ok) {
+        mStaticCfg->mCameras.push_back(*mCurCam);
+    } else {
+        LOGE("%s: auto discovery produced no camera info for sensor '%s' entity '%s'",
+             __func__, sensorName.c_str(), sensorEntityName.c_str());
+    }
+
+    delete mCurCam;
+    mCurCam = nullptr;
+    return ok;
+}
+
 bool CameraSensorsParser::run(const std::string& filename) {
     Json::Value root = openJsonFile(filename);
 

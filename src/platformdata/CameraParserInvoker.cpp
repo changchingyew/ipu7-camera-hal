@@ -47,8 +47,25 @@ void CameraParserInvoker::parseSensors() {
         return;
     }
 
+    const bool autoDiscover = mStaticCfg->mCommonConfig.autoDiscoverSensors;
+
     for (const auto& sensor : allSensors) {
         ++mNumSensors;
+
+        if (autoDiscover) {
+            // No "sensors/<name>.json" file needed at all: CameraSensorsParser derives
+            // the sensor's own subdev entity name internally from the resolved I2C bus.
+            // See CameraSensorsParser::runAutoDiscovery / SensorNodeDiscovery.
+            LOGI("%s: auto discovering sensor '%s'", __func__, sensor.first.c_str());
+
+            CameraSensorsParser cameraSensorsParser(mMediaCtl, mStaticCfg, sensor.second);
+            const bool ret = cameraSensorsParser.runAutoDiscovery(sensor.first);
+            if (!ret)
+                LOGE("%s, auto discovery of '%s' failed!", __func__, sensor.first.c_str());
+            else
+                LOGI("%s, '%s' auto discovered!", __func__, sensor.first.c_str());
+            continue;
+        }
 
         std::string sensorFileName = "sensors/" + sensor.first + ".json";
         LOGI("%s: I will Load config file: %s", __func__, sensorFileName.c_str());

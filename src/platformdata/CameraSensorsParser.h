@@ -57,6 +57,25 @@ class CameraSensorsParser : public JsonParserBase {
 
     bool run(const std::string& filename) override final;
 
+    /**
+     * \brief Build a CameraInfo entry entirely from self discovery, without any
+     *        "sensors/<name>.json" file at all (see SensorNodeDiscovery). Used when
+     *        the "Common" section of libcamhal_configs.json sets
+     *        "autoDiscoverSensors": true, so a whole new sensor can be added to a
+     *        board by listing it in "availableSensors" only.
+     *
+     * The sensor's own v4l2 subdev entity name (e.g. "isx031 a-0", as reported by the
+     * kernel media graph) is derived internally from sensorName and the resolved
+     * I2C bus, the same way a hand-authored "$I2CBUS" placeholder would be.
+     *
+     * \param sensorName: generic sensor name, e.g. "isx031-1" (as used in
+     *                     "availableSensors" and downstream sensorName lookups).
+     *
+     * \return true if discovery succeeded and a CameraInfo entry was appended to
+     *         mStaticCfg->mCameras, false otherwise.
+     */
+    bool runAutoDiscovery(const std::string& sensorName);
+
  private:
     struct NvmDeviceInfo {
         std::string nodeName;
