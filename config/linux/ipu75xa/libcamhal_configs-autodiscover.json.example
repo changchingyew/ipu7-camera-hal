@@ -14,20 +14,22 @@
 // limitations under the License.
 //
 // EXAMPLE ONLY -- not wired into any build. Mixed board: two isx031 "simple yuv"
-// GMSL cameras (self discoverable) alongside an ov13b10 Bayer camera (needs ISP
-// demosaic/3A tuning, so it keeps its hand-authored sensors/ov13b10-uf.json -- note
-// ar0233, despite the "GMSL Sensor" name, actually outputs YUV via its max9x
-// deserializer just like isx031, so it is self discoverable too; see
-// config/ar0233/*/sensors/ar0233-1.json for that reduced discoverSensorEntity form).
-// Every entry in "availableSensors" is still required (see getAvailableSensors(),
-// which confirms each one is actually present via the live media graph); listing a
-// sensor name in "autoDiscoverSensors" additionally selects it to be self discovered
-// instead of loaded from "sensors/<name>.json" -- CameraParserInvoker builds its
-// CameraInfo purely from SensorNodeDiscovery, deriving the sensor's own subdev entity
-// name ("<sensor name> <I2CBus>", e.g. "isx031 a-0" for "isx031-a-0") from the
-// resolved CSI port/I2C bus the same way a hand-authored "$I2CBUS" placeholder would
-// (see CameraSensorsParser::runAutoDiscovery). Sensors not listed in
-// "autoDiscoverSensors" -- "ov13b10-uf" here -- fall back to loading
+// GMSL cameras plus an ar0233 GMSL camera (all self discoverable -- ar0233 outputs
+// YUV via its max9x deserializer just like isx031, despite the "GMSL Sensor" name
+// suggesting Bayer), alongside an ov13b10 true Bayer camera (needs ISP demosaic/3A
+// tuning, so it keeps its hand-authored sensors/ov13b10-uf.json). Every entry in
+// "availableSensors" is still required (see getAvailableSensors(), which confirms
+// each one is actually present via the live media graph); listing a sensor name in
+// "autoDiscoverSensors" additionally selects it to be self discovered instead of
+// loaded from "sensors/<name>.json" -- CameraParserInvoker builds its CameraInfo
+// purely from SensorNodeDiscovery, deriving the sensor's own subdev entity name
+// ("<sensor name> <I2CBus>", e.g. "isx031 a-0" for "isx031-a-0") from the resolved
+// CSI port/I2C bus the same way a hand-authored "$I2CBUS" placeholder would (see
+// CameraSensorsParser::runAutoDiscovery). Once a sensor is listed here its
+// "sensors/<name>.json" file is never opened at all -- it can be deleted entirely
+// (no need to even keep a stub with "discoverSensorEntity" in it, since
+// runAutoDiscovery derives the subdev entity name internally). Sensors not listed
+// in "autoDiscoverSensors" -- "ov13b10-uf" here -- fall back to loading
 // "sensors/<name>.json" exactly as before, so Bayer/RAW sensors needing ISP/PSys/3A
 // tuning can coexist on the same board as self-discovered ones. Self discovery still
 // requires each listed sensor's graph to have already been linked/routed out-of-band
@@ -39,13 +41,15 @@
     "Common" : {
         "version": 1.0,
         "platform": "IPU7",
-        //  Self discover isx031-1 and isx031-a; ov13b10-uf keeps its hand-authored
+        //  Self discover isx031-1, isx031-a and ar0233-1 (all YUV passthrough); no
+        //  sensors/isx031-1.json, sensors/isx031-a.json or sensors/ar0233-1.json
+        //  files are needed for these. ov13b10-uf keeps its hand-authored
         //  sensors/ov13b10-uf.json since it is a true Bayer/RAW sensor (SGRBG10,
         //  enableAIQ: true) needing ISP demosaic/3A tuning.
-        "autoDiscoverSensors": ["isx031-1", "isx031-a"],
+        "autoDiscoverSensors": ["isx031-1", "isx031-a", "ar0233-1"],
         //  The value format of availableSensors is "sensor name"-wf/uf-"CSI port ID".
         //  wf is world facing, and uf is user facing.
-        "availableSensors": ["isx031-1-0", "isx031-a-0", "ov13b10-uf-2"],
+        "availableSensors": ["isx031-1-0", "isx031-a-0", "ar0233-1-3", "ov13b10-uf-2"],
         "videoStreamNum" : 2
     }
 }
