@@ -18,6 +18,7 @@
 
 #include "CameraParserInvoker.h"
 
+#include <algorithm>
 #include <string>
 #include <vector>
 #include <utility>
@@ -47,11 +48,13 @@ void CameraParserInvoker::parseSensors() {
         return;
     }
 
-    const bool autoDiscover = mStaticCfg->mCommonConfig.autoDiscoverSensors;
+    const std::vector<std::string>& autoDiscoverList = mStaticCfg->mCommonConfig.autoDiscoverSensors;
 
     for (const auto& sensor : allSensors) {
         ++mNumSensors;
 
+        const bool autoDiscover = std::find(autoDiscoverList.begin(), autoDiscoverList.end(),
+                                            sensor.first) != autoDiscoverList.end();
         if (autoDiscover) {
             // No "sensors/<name>.json" file needed at all: CameraSensorsParser derives
             // the sensor's own subdev entity name internally from the resolved I2C bus.

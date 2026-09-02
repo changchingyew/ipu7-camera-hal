@@ -13,31 +13,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
-// EXAMPLE ONLY -- not wired into any build. Same board as libcamhal_configs.json plus
-// isx031-1-selfdiscover.json.example, taken one step further: "autoDiscoverSensors":
-// true removes the need for a "sensors/<name>.json" file altogether -- including the
-// one-line "discoverSensorEntity" stub -- for every sensor listed in
-// "availableSensors". CameraParserInvoker builds each CameraInfo purely from
-// SensorNodeDiscovery, deriving the sensor's own subdev entity name ("<sensor
-// name> <I2CBus>", e.g. "isx031 a-0" for "isx031-a-0") from the resolved CSI
-// port/I2C bus the same way a hand-authored "$I2CBUS" placeholder would (see
-// CameraSensorsParser::runAutoDiscovery). A whole new board is therefore added by
-// editing only this one file's "availableSensors" list, so long as every sensor's
-// graph has already been linked/routed out-of-band (udev/board-init service, or
-// kernel default routing) before ipu7-camera-hal starts, and its active output format
-// is a self-discoverable "simple yuv" passthrough one (see
-// CameraUtils::getPixelFormatFromMBusCode). Bayer/RAW sensors needing ISP/PSys/3A
-// tuning still require a hand-authored "sensors/<name>.json" and must not be listed
-// here; set "autoDiscoverSensors": false (the default) for boards that mix the two.
+// EXAMPLE ONLY -- not wired into any build. Mixed board: two isx031 "simple yuv"
+// GMSL cameras (self discoverable) alongside an ar0233 Bayer camera (still needs ISP
+// demosaic/3A tuning, so it keeps its hand-authored sensors/ar0233-1.json). Every
+// entry in "availableSensors" is still required (see getAvailableSensors(), which
+// confirms each one is actually present via the live media graph); listing a sensor
+// name in "autoDiscoverSensors" additionally selects it to be self discovered instead
+// of loaded from "sensors/<name>.json" -- CameraParserInvoker builds its CameraInfo
+// purely from SensorNodeDiscovery, deriving the sensor's own subdev entity name
+// ("<sensor name> <I2CBus>", e.g. "isx031 a-0" for "isx031-a-0") from the resolved
+// CSI port/I2C bus the same way a hand-authored "$I2CBUS" placeholder would (see
+// CameraSensorsParser::runAutoDiscovery). Sensors not listed in
+// "autoDiscoverSensors" -- "ar0233-1" here -- fall back to loading
+// "sensors/<name>.json" exactly as before, so Bayer/RAW sensors needing ISP/PSys/3A
+// tuning can coexist on the same board as self-discovered ones. Self discovery still
+// requires each listed sensor's graph to have already been linked/routed out-of-band
+// (udev/board-init service, or kernel default routing) before ipu7-camera-hal starts,
+// and its active output format to be a self-discoverable "simple yuv" passthrough one
+// (see CameraUtils::getPixelFormatFromMBusCode).
 //
 {
     "Common" : {
         "version": 1.0,
         "platform": "IPU7",
-        "autoDiscoverSensors": true,
+        //  Self discover isx031-1 and isx031-a; ar0233-1 keeps its hand-authored
+        //  sensors/ar0233-1.json since Bayer sensors aren't self discoverable.
+        "autoDiscoverSensors": ["isx031-1", "isx031-a"],
         //  The value format of availableSensors is "sensor name"-wf/uf-"CSI port ID".
         //  wf is world facing, and uf is user facing.
-        "availableSensors": ["isx031-1-0", "isx031-a-0", "isx031-b-2"],
+        "availableSensors": ["isx031-1-0", "isx031-a-0", "ar0233-1-2"],
         "videoStreamNum" : 2
     }
 }

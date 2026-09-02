@@ -216,20 +216,23 @@ struct CommonConfig {
     int cameraNumber;
     int videoStreamNum;
     bool useGpuProcessor;
-    // When true, every entry in availableSensors is self discovered at runtime (see
+    // Subset of availableSensors (matched against the "sensor name" part, e.g.
+    // "isx031-1" out of "isx031-1-0") to self discover at runtime (see
     // SensorNodeDiscovery) instead of being loaded from a "sensors/<name>.json" file:
-    // no per-sensor JSON is needed at all, so long as each sensor's graph has already
-    // been linked/routed out-of-band before ipu7-camera-hal starts, and its active
-    // output format is a self-discoverable "simple yuv" passthrough one (see
-    // CameraUtils::getPixelFormatFromMBusCode).
-    bool autoDiscoverSensors;
+    // no per-sensor JSON is needed at all for those, so long as each one's graph has
+    // already been linked/routed out-of-band before ipu7-camera-hal starts, and its
+    // active output format is a self-discoverable "simple yuv" passthrough one (see
+    // CameraUtils::getPixelFormatFromMBusCode). Any sensor in availableSensors that
+    // isn't listed here still falls back to loading "sensors/<name>.json" as usual --
+    // this is how Bayer/RAW sensors needing ISP/PSys/3A tuning coexist on the same
+    // board as self-discovered ones.
+    std::vector<std::string> autoDiscoverSensors;
 
     CommonConfig() {
         xmlVersion = 1.0;
         cameraNumber = -1;
         videoStreamNum = DEFAULT_VIDEO_STREAM_NUM;
         useGpuProcessor = false;
-        autoDiscoverSensors = false;
     }
 };
 

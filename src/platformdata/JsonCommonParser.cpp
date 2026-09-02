@@ -61,7 +61,9 @@ bool CameraCommonParser::run(const std::string& filename) {
         mStaticCfg->mCommonConfig.useGpuProcessor = node["useGpuProcessor"].asBool();
     }
     if (node.isMember("autoDiscoverSensors")) {
-        mStaticCfg->mCommonConfig.autoDiscoverSensors = node["autoDiscoverSensors"].asBool();
+        auto ele = node["autoDiscoverSensors"];
+        for (Json::Value::ArrayIndex i = 0; i < ele.size(); ++i)
+            mStaticCfg->mCommonConfig.autoDiscoverSensors.push_back(ele[i].asString());
     }
     return true;
 }
