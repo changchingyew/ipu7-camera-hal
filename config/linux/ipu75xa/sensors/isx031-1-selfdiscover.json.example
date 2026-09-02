@@ -1,0 +1,53 @@
+//
+// Copyright (C) 2026 Intel Corporation
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// EXAMPLE ONLY -- not wired into any build. Demonstrates the same isx031-1 camera
+// instance as isx031-1.json (1462 lines, hand authored MediaCtlConfig/
+// supportedStreamConfig/StaticMetadata.fpsRange/vcCount/vcId/vcGroupId) reduced with the
+// new self discovery path added by SensorNodeDiscovery: "discoverSensorEntity" replaces
+// MediaCtlConfig entirely, and supportedStreamConfig, StaticMetadata.fpsRange and the
+// virtual channel placement are all derived at runtime (via
+// VIDIOC_SUBDEV_ENUM_FRAME_SIZE / VIDIOC_SUBDEV_ENUM_FRAME_INTERVAL /
+// VIDIOC_SUBDEV_G_ROUTING) instead of being hand authored -- so long as the
+// isx031-a-0 -> max9x -> Intel IPU7 CSI2 0 -> ISYS capture chain has already been
+// linked/routed out-of-band (udev/board-init service, or kernel default routing) before
+// ipu7-camera-hal starts. Note this one stub therefore covers what used to need eight
+// near-identical per-virtual-channel files (isx031-1.json .. isx031-8.json), differing
+// only in which sensor entity they start from: "vcId" no longer has to be hand assigned,
+// it simply falls out of the stream id this sensor's data occupies on the CSI-2
+// receiver, and "vcCount" falls out of how many streams that receiver multiplexes.
+// Every discovered value is a fallback only: adding an explicit "vcCount"/"vcId"/
+// "vcGroupId", or a "StaticMetadata" block with "fpsRange", always overrides discovery
+// -- worth doing for "vcGroupId" specifically if a board needs cameras behind different
+// deserializers to be mutually exclusive, since discovery conservatively reports group 0
+// for all of them (see SensorNodeDiscovery::discoverVcInfo). Only "simple yuv"
+// passthrough sensors/bridges (see CameraUtils::getPixelFormatFromMBusCode) qualify;
+// enableAIQ/usePSysProcessor stay false exactly as in the hand authored file, since no
+// ISP/PSys/3A path is involved.
+//
+{
+  "CameraSettings": {
+    "Sensor": [
+      {
+        "name": "isx031-1",
+        "description": "isx031 as sensor (self discovered).",
+        "discoverSensorEntity": "isx031 a-0",
+
+        "enableAIQ": false,
+        "usePSysProcessor": false
+      }
+    ]
+  }
+}

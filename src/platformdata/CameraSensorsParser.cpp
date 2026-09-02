@@ -105,6 +105,64 @@ void CameraSensorsParser::parseMediaCtlConfigSection(const Json::Value& node) {
     }
 }
 
+void CameraSensorsParser::discoverSensorMediaCtlConfig(const std::string& sensorEntityName) {
+    CheckAndLogError(!mMediaCtl, VOID_VALUE, "%s, MediaControl not available", __func__);
+
+    SensorNodeDiscovery discovery(mMediaCtl);
+    std::vector<MediaCtlConf> confs;
+    std::map<int, stream_array_t> streamMap;
+    std::vector<double> fpsRange;
+    SensorNodeDiscovery::DiscoveredVcInfo vcInfo;
+
+    bool ok = discovery.discover(sensorEntityName, &confs, &streamMap, &fpsRange, &vcInfo);
+    if (!ok) {
+        LOGE("%s: self discovery failed for sensor entity '%s' (sensor '%s'); its "
+             "graph must already be configured out-of-band, and its output format "
+             "must be a self-discoverable passthrough one (see "
+             "CameraUtils::getPixelFormatFromMBusCode)",
+             __func__, sensorEntityName.c_str(), mCurCam->sensorName.c_str());
+        return;
+    }
+
+    mCurCam->mMediaCtlConfs.insert(mCurCam->mMediaCtlConfs.end(), confs.begin(), confs.end());
+
+    stream_array_t configsArray;
+    for (auto& mcEntry : streamMap) {
+        auto it = mCurCam->mStreamToMcMap.find(mcEntry.first);
+        if (it == mCurCam->mStreamToMcMap.end()) {
+            mCurCam->mStreamToMcMap.insert({mcEntry.first, stream_array_t()});
+            it = mCurCam->mStreamToMcMap.find(mcEntry.first);
+        }
+        for (auto& cfg : mcEntry.second) {
+            it->second.push_back(cfg);
+            configsArray.push_back(cfg);
+        }
+    }
+    mCurCam->mStaticMetadata.mConfigsArray = configsArray;
+
+    // Self discovered fps range: only used as a fallback. It is intentionally applied
+    // here, before parseStaticMetaDataSection() runs for this sensor's "StaticMetadata"
+    // node (see parseSensorSection()), so an explicit "fpsRange" in the JSON -- parsed
+    // afterwards -- always overwrites it and takes precedence.
+    if (!fpsRange.empty()) {
+        mCurCam->mStaticMetadata.mFpsRange = fpsRange;
+    }
+
+    // VIRTUAL_CHANNEL_S
+    // Self discovered virtual channel placement. Unlike fpsRange above, the "vcCount"/
+    // "vcId"/"vcGroupId" keys are parsed *before* this point (see parseSensorSection()),
+    // so precedence has to be enforced explicitly here: only fill these in when the JSON
+    // left them at their defaults, so a hand-authored value still wins.
+    if ((vcInfo.count != 0) && (mCurCam->mVCCount == 0)) {
+        mCurCam->mVCCount = vcInfo.count;
+        mCurCam->mVCId = vcInfo.id;
+        if (mCurCam->mVCGroupId < 0) {
+            mCurCam->mVCGroupId = vcInfo.groupId;
+        }
+    }
+    // VIRTUAL_CHANNEL_E
+}
+
 void CameraSensorsParser::parseMediaCtlRouteObject(const Json::Value& node, MediaCtlConf* conf) {
     for (Json::Value::ArrayIndex i = 0; i < node.size(); ++i) {
         const auto ele = node[i];
@@ -908,6 +966,11 @@ void CameraSensorsParser::parseSensorSection(const Json::Value& node) {
 
     if (node.isMember("MediaCtlConfig")) {
         parseMediaCtlConfigSection(node["MediaCtlConfig"]);
+    } else if (node.isMember("discoverSensorEntity")) {
+        // Self discovery path: no hand-authored MediaCtlConfig/supportedStreamConfig,
+        // instead query the live v4l2 subdevs whose links/routing have already been
+        // configured out-of-band. See SensorNodeDiscovery for details.
+        discoverSensorMediaCtlConfig(node["discoverSensorEntity"].asString());
     }
     if (node.isMember("StaticMetadata")) {
         parseStaticMetaDataSection(node["StaticMetadata"]);

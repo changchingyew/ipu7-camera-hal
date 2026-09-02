@@ -25,6 +25,7 @@ set(PLATFORMDATA_SRCS ${PLATFORMDATA_SRCS}
     ${PLATFORMDATA_DIR}/CameraSensorsParser.cpp
     ${PLATFORMDATA_DIR}/JsonCommonParser.cpp
     ${PLATFORMDATA_DIR}/JsonParserBase.cpp
+    ${PLATFORMDATA_DIR}/SensorNodeDiscovery.cpp
     CACHE INTERNAL "platformdata sources"
 )
 # IPU7_SOURCE_FILE_E

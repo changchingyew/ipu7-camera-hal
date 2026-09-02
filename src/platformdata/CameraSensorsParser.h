@@ -18,6 +18,7 @@
 
 #include "JsonParserBase.h"
 #include "PlatformData.h"
+#include "SensorNodeDiscovery.h"
 
 namespace icamera {
 #define NVM_OS "CrOS"
@@ -82,6 +83,7 @@ class CameraSensorsParser : public JsonParserBase {
     void parseDVSType(const Json::Value& node);
     void parseLardTags(const Json::Value& node);
     void parseMediaCtlConfigSection(const Json::Value& node);
+    void discoverSensorMediaCtlConfig(const std::string& sensorEntityName);
     void parseMediaCtlSelectionObject(const Json::Value& node, MediaCtlConf* mc);
     void parseMediaCtlConfigFormatsObject(const Json::Value& node, MediaCtlConf* conf);
     void parseMediaCtlRouteObject(const Json::Value& node, MediaCtlConf* conf);
