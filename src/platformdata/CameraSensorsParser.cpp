@@ -766,7 +766,13 @@ void CameraSensorsParser::parseSensorSection(const Json::Value& node) {
     if (node.isMember("vcId")) {
         mCurCam->mVCId = node["vcId"].asInt();
     }
-    if (node.isMember("vcGoupId")) {
+    if (node.isMember("vcGroupId")) {
+        mCurCam->mVCGroupId = node["vcGroupId"].asInt();
+    } else if (node.isMember("vcGoupId")) {
+        // Historical misspelling of "vcGroupId": every shipped sensor JSON actually
+        // writes "vcGroupId", so this key never matched and the group id silently
+        // stayed at its -1 default. Both spellings are accepted now, the correct one
+        // taking precedence, so existing configs keep working either way.
         mCurCam->mVCGroupId = node["vcGoupId"].asInt();
     }
     // VIRTUAL_CHANNEL_E
